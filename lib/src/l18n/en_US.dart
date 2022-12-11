@@ -138,6 +138,16 @@ class en_US {
       'getGalleryTorrentsFailed': 'Get torrents failed',
       'chooseArchive': 'Choose Archive',
 
+      /// detail dialog
+      'galleryUrl': 'Gallery Url',
+      'title': 'Title',
+      'japaneseTitle': 'Japanese Title',
+      'category': 'Category',
+      'publishTime': 'Publish Time',
+      'pageCount': 'Page Count',
+      'favoriteCount': 'Favorite Count',
+      'ratingCount': 'Rating Count',
+
       /// comment page
       'newComment': 'New Comment',
       'updateComment': 'Update Comment',
@@ -236,8 +246,10 @@ class en_US {
       'listWithTags': 'Card',
       'waterfallFlowWithImageOnly': 'Waterfall Flow(Image Only)',
       'waterfallFlowWithImageAndInfo': 'Waterfall Flow',
-      'crossAxisCountInWaterFallFlow': 'Waterfall Flow Column count',
+      'crossAxisCountInWaterFallFlow': 'Waterfall Flow Column Count',
       'pageListStyle': 'Gallery List Style (Page)',
+      'crossAxisCountInGridDownloadPageForGroup': 'Download Page Grid Column Count(Group)',
+      'crossAxisCountInGridDownloadPageForGallery': 'Download Page Grid Column Count(Gallery)',
       'global': 'Global',
       'auto': 'Auto',
       'moveCover2RightSide': 'Move Cover to Right Side',

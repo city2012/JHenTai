@@ -138,6 +138,16 @@ class zh_CN {
       'getGalleryTorrentsFailed': '获取种子失败',
       'chooseArchive': '选择归档',
 
+      /// detail dialog
+      'galleryUrl': '画廊链接',
+      'title': '标题',
+      'japaneseTitle': '日文标题',
+      'category': '类别',
+      'publishTime': '发布时间',
+      'pageCount': '页数',
+      'favoriteCount': '收藏次数',
+      'ratingCount': '评分次数',
+
       /// comment page
       'newComment': '新评论',
       'updateComment': '更新评论',
@@ -237,6 +247,9 @@ class zh_CN {
       'waterfallFlowWithImageAndInfo': '瀑布流',
       'crossAxisCountInWaterFallFlow': '瀑布流列数',
       'pageListStyle': '画廊列表样式(页面)',
+      'crossAxisCountInGridDownloadPage': '下载页网格布局列数',
+      'crossAxisCountInGridDownloadPageForGroup': '下载页网格布局列数(分组)',
+      'crossAxisCountInGridDownloadPageForGallery': '下载页网格布局列数(画廊)',
       'global': '全局',
       'auto': '自动',
       'moveCover2RightSide': '移动封面图至右侧',

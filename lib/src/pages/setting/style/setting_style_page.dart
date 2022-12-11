@@ -32,6 +32,8 @@ class SettingStylePage extends StatelessWidget {
                 StyleSetting.listMode.value == ListMode.waterfallFlowWithImageOnly)
               _buildCrossAxisCountInWaterFallFlow().fadeIn(),
             _buildPageListMode(),
+            _buildCrossAxisCountInGridDownloadPageForGroup(),
+            _buildCrossAxisCountInGridDownloadPageForGallery(),
             if (!StyleSetting.isInWaterFlowListMode) _buildMoveCover2RightSide().fadeIn(),
             _buildTagTranslate(),
             _buildLayout(),
@@ -109,6 +111,46 @@ class SettingStylePage extends StatelessWidget {
         elevation: 4,
         alignment: AlignmentDirectional.centerEnd,
         onChanged: StyleSetting.saveCrossAxisCountInWaterFallFlow,
+        items: [
+          DropdownMenuItem(child: Text('auto'.tr), value: null),
+          DropdownMenuItem(child: Text('2'.tr), value: 2),
+          DropdownMenuItem(child: Text('3'.tr), value: 3),
+          DropdownMenuItem(child: Text('4'.tr), value: 4),
+          DropdownMenuItem(child: Text('5'.tr), value: 5),
+          DropdownMenuItem(child: Text('6'.tr), value: 6),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCrossAxisCountInGridDownloadPageForGroup() {
+    return ListTile(
+      title: Text('crossAxisCountInGridDownloadPageForGroup'.tr),
+      trailing: DropdownButton<int?>(
+        value: StyleSetting.crossAxisCountInGridDownloadPageForGroup.value,
+        elevation: 4,
+        alignment: AlignmentDirectional.centerEnd,
+        onChanged: StyleSetting.saveCrossAxisCountInGridDownloadPageForGroup,
+        items: [
+          DropdownMenuItem(child: Text('auto'.tr), value: null),
+          DropdownMenuItem(child: Text('2'.tr), value: 2),
+          DropdownMenuItem(child: Text('3'.tr), value: 3),
+          DropdownMenuItem(child: Text('4'.tr), value: 4),
+          DropdownMenuItem(child: Text('5'.tr), value: 5),
+          DropdownMenuItem(child: Text('6'.tr), value: 6),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCrossAxisCountInGridDownloadPageForGallery() {
+    return ListTile(
+      title: Text('crossAxisCountInGridDownloadPageForGallery'.tr),
+      trailing: DropdownButton<int?>(
+        value: StyleSetting.crossAxisCountInGridDownloadPageForGallery.value,
+        elevation: 4,
+        alignment: AlignmentDirectional.centerEnd,
+        onChanged: StyleSetting.crossAxisCountInGridDownloadPageForGallery,
         items: [
           DropdownMenuItem(child: Text('auto'.tr), value: null),
           DropdownMenuItem(child: Text('2'.tr), value: 2),

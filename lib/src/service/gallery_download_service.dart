@@ -29,19 +29,20 @@ import '../model/gallery.dart';
 import '../model/gallery_image.dart';
 import '../network/eh_cookie_manager.dart';
 import '../network/eh_request.dart';
+import '../pages/download/grid/base/grid_base_page_service_mixin.dart';
 import '../setting/path_setting.dart';
 import '../utils/eh_executor.dart';
 import '../utils/eh_spider_parser.dart';
 import '../utils/snack_util.dart';
 
-const String galleryCountOrOrderChangedId = 'galleryCountOrOrderChangedId';
-const String downloadImageId = 'downloadImageId';
-const String downloadImageUrlId = 'downloadImageUrlId';
-const String galleryDownloadProgressId = 'galleryDownloadProgressId';
-const String galleryDownloadSpeedComputerId = 'galleryDownloadSpeedComputerId';
-
 /// Responsible for local images meta-data and download all images of a gallery
-class GalleryDownloadService extends GetxController {
+class GalleryDownloadService extends GetxController with GridBasePageServiceMixin {
+  final String downloadImageId = 'downloadImageId';
+  final String downloadImageUrlId = 'downloadImageUrlId';
+  final String galleryDownloadProgressId = 'galleryDownloadProgressId';
+  final String galleryDownloadSpeedComputerId = 'galleryDownloadSpeedComputerId';
+  final String galleryDownloadSuccessId = 'galleryDownloadSuccessId';
+
   late EHExecutor executor;
 
   List<String> allGroups = [];
@@ -50,7 +51,7 @@ class GalleryDownloadService extends GetxController {
 
   static const int _retryTimes = 3;
   static const String metadataFileName = '.metadata';
-  static const int _maxTitleLength = 100;
+  static const int _maxTitleLength = 85;
 
   static const int defaultDownloadGalleryPriority = 4;
   static const int _priorityBase = 100000000;
@@ -282,7 +283,6 @@ class GalleryDownloadService extends GetxController {
       return false;
     }
     _sortGalleryAndGroups();
-
     return _updateGalleryGroupInDatabase(gallery.gid, group);
   }
 
@@ -330,6 +330,7 @@ class GalleryDownloadService extends GetxController {
 
       /// compatible with new field
       (metadata['gallery'] as Map).putIfAbsent('downloadOriginalImage', () => false);
+      (metadata['gallery'] as Map).putIfAbsent('sortOrder', () => 0);
 
       GalleryDownloadedData gallery = GalleryDownloadedData.fromJson(metadata['gallery']);
       List<GalleryImage?> images = (jsonDecode(metadata['images']) as List).map((_map) => _map == null ? null : GalleryImage.fromJson(_map)).toList();
@@ -386,7 +387,7 @@ class GalleryDownloadService extends GetxController {
           }
           images[serialNo]!.path = newPath;
 
-          update(['$downloadImageId::${gallery.gid}', '$downloadImageUrlId::${gallery.gid}::$serialNo']);
+          update(['$downloadImageId::${gallery.gid}::$serialNo', '$downloadImageUrlId::${gallery.gid}::$serialNo']);
         }
       }
     });
@@ -895,6 +896,7 @@ class GalleryDownloadService extends GetxController {
       downloadProgress.downloadStatus = DownloadStatus.downloaded;
       await _updateGalleryDownloadStatus(gallery, DownloadStatus.downloaded);
       galleryDownloadInfos[gallery.gid]!.speedComputer.dispose();
+      update(['$galleryDownloadSuccessId::${gallery.gid}']);
     }
 
     update(['$galleryDownloadProgressId::${gallery.gid}']);
@@ -974,7 +976,7 @@ class GalleryDownloadService extends GetxController {
 
     image.downloadStatus = downloadStatus;
 
-    update(['$downloadImageId::${gallery.gid}', '$downloadImageUrlId::${gallery.gid}::$serialNo']);
+    update(['$downloadImageId::${gallery.gid}::$serialNo', '$downloadImageUrlId::${gallery.gid}::$serialNo']);
 
     _saveGalleryInfoInDisk(gallery);
 

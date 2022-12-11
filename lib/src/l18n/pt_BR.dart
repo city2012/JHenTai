@@ -139,6 +139,16 @@ class pt_BR {
       'getGalleryTorrentsFailed': 'Falha ao obter torrents',
       'chooseArchive': 'Escolher Arquivo',
 
+      /// detail dialog
+      'galleryUrl': 'Gallery Url',
+      'title': 'Title',
+      'japaneseTitle': 'Japanese Title',
+      'category': 'Category',
+      'publishTime': 'Publish Time',
+      'pageCount': 'Page Count',
+      'favoriteCount': 'Favorite Count',
+      'ratingCount': 'Rating Count',
+
       /// comment page
       'newComment': 'Novo comentário',
       'updateComment': 'Update Comment',
@@ -239,6 +249,8 @@ class pt_BR {
       'waterfallFlowWithImageAndInfo': 'Cachoeira',
       'crossAxisCountInWaterFallFlow': 'Waterfall Flow Column count',
       'pageListStyle': 'Gallery List Style (Page)',
+      'crossAxisCountInGridDownloadPageForGroup': 'Download Page Grid Column Count(Group)',
+      'crossAxisCountInGridDownloadPageForGallery': 'Download Page Grid Column Count(Gallery)',
       'global': 'Global',
       'auto': 'Auto',
       'moveCover2RightSide': 'Mover a tampa para o lado direito',

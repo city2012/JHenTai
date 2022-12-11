@@ -124,7 +124,7 @@ class UIConfig {
 
   static const double downloadPageGroupHeight = 50;
 
-  static Color get downloadPageGroupColor => Get.theme.colorScheme.secondaryContainer;
+  static Color downloadPageGroupColor(BuildContext context) => Theme.of(context).colorScheme.secondaryContainer;
 
   static BoxShadow get downloadPageGroupShadow => BoxShadow(
         color: Colors.black.withOpacity(0.3),
@@ -156,6 +156,15 @@ class UIConfig {
 
   static Color get downloadPageProgressIndicatorPausedColor => Get.theme.colorScheme.surfaceVariant;
 
+  /// download page with gridview
+  static const double downloadPageGridViewCardAspectRatio = 0.8;
+  static const double downloadPageGridViewCardWidth = 180;
+  static const double downloadPageGridViewCardHeight = 180 / 0.8;
+
+  static const double downloadPageGridViewGroupPadding = 6;
+  static const double downloadPageGridViewInfoTextSize = 12;
+  static const double downloadPageGridViewSpeedTextSize = 8;
+  static const double downloadPageGridViewCircularProgressSize = 40;
   /// Search page
   static const double desktopSearchBarHeight = 32;
   static const double mobileV2SearchBarHeight = 28;
